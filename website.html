@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFDAB9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .nav {
+            background-color: #DC143C;
+            padding: 10px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+        }
+
+        .nav button {
+            color: white;
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .nav button:hover {
+            background-color: #B22222;
+            border-radius: 15px;
+        }
+
+        .nav button.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .content {
+            background-color: #FFDAB9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 300px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .image-container {
+            flex: 0 0 300px;
+            padding-top: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        ol {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+        }
+
+        #podnaslov{
+            font-size: 30px;
+        }
+        #podnaslov2{
+            font-size: 20px;
+        }
+        #slika1{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MULTIMEDIJALNI SUSTAVI</h1>
+            <nav class="nav">
+                <button onclick="showPage('home')" id="homeBtn">HOME</button>
+                <button onclick="showPage('image')" id="imageBtn">IMAGE</button>
+                <button class="disabled">SOUND</button>
+                <button onclick="showPage('graphics')" id="graphicsBtn">GRAPHICS</button>                
+                <button class="disabled">VIDEO</button>
+            </nav>
+        </header>
+
+        <main class="content">
+            <div id="home" class="page active">
+                <div class="text-content">
+                    <p id="podnaslov">Ovo je početna stranica na temu Multimedijalni sustavi.</p><br><br><br><br>
+                    <p>Ovo je samo dizajn i izrađen je u aplikaciji <i>Figma</i>. Student je za vrijeme semestra imao za zadatak odslušati predavanja na temu korištenja određenih alata te na vježbama naučiti kako se ti alati koriste.</p>
+                </div>
+            </div>
+
+            <div id="image" class="page">
+                <div class="text-content">
+                    <h2>IMAGE</h2><br>
+                    <p id="podnaslov2">Ova slika je napravljena u aplikaciji GIMP.</p><br>
+                    <p id="podnaslov2">Koraci kreiranja slike: </p><br>
+                    <ol>
+                        <li>Na google-u smo preuzeli sliku crne majice kao 'template' po kojem ćemo dalje crtati</li>
+                        <li>Nakon toga smo napravili masku na koju dodajemo tekst ili sliku</li>
+                        <li>Sliku smo dodali na majicu kao novi sloj</li>
+                        <li>'STAR WARS' je dodano pomoću alata za dodavanje teksta</li>
+                    </ol>
+                </div>
+                <div class="image-container">
+                    <img src="majica.png" alt="Shirt Design" id="slika1">
+                </div>
+            </div>
+
+            <div id="graphics" class="page">
+                <div class="text-content">
+                    <h2>GRAPHICS</h2><br>
+                    <p id="podnaslov2">Ova 'slika' je napravljena u aplikaciji INKSCAPE. No, za razliku od slike u djelu 'IMAGE' ova slika nije rasterska nego vektorska. To znači da nije definirana pikselima, nego naredbama pomoću kojih se pri svakom novom povećavanju ili smanjivanju projekta 'crta' nova slika.</p><br>
+                    <p id="podnaslov2">Koraci kreiranja slike: </p><br>
+                    <ol>
+                        <li>Nakon otvaranja praznog dokumenta u aplikaciji, kopiramo .svg dizajn mačke</li>
+                        <li>Kao pozadinu dodajemo neki oblik, konkretno pravokutnik, te nad njim mijenjamo boju pozadine, sjene i slično.</li>
+                        <li>Mačku je potrebno ponovno zalijepiti kako bi se napravila maska (<i>naredba 'set mask'</i>)</li>
+                        <li>Nakon toga možemo dodati novi sloj mačke te nad njim mijenjati sjenu, boju i druge efekte</li>
+                    </ol>
+                </div>
+                <div class="image-container">
+                    <img src="cat.svg" alt="Cat Graphics">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
